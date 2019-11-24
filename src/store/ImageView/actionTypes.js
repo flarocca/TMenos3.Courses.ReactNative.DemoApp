@@ -1,0 +1,4 @@
+export default {
+  IMAGE_LOADING: 'IMAGE_LOADING',
+  IMAGE_LOADED: 'IMAGE_LOADED',
+};
