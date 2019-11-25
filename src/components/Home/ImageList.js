@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import ImageItem from './ImageItem';
 
-let width = Dimensions.get('window').width;
+const width = Dimensions.get('window').width;
 
 class ImageList extends Component {
   render() {

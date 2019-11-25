@@ -10,7 +10,7 @@ import {
 import ShareIcon from '../../icons/Share';
 import Blur from '../../icons/Blur';
 
-let width = Dimensions.get('window').width;
+const width = Dimensions.get('window').width;
 
 class Footer extends Component {
   render() {
@@ -28,17 +28,13 @@ class Footer extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.action}
-            onPress={() => this._onSharePress(this.props.details.imageUrl)}>
+            onPress={() => Share.share({message: this.props.details.imageUrl})}>
             <ShareIcon />
           </TouchableOpacity>
         </View>
       </View>
     );
   }
-
-  _onSharePress = imageUrl => {
-    Share.share({message: imageUrl});
-  };
 }
 
 const styles = StyleSheet.create({

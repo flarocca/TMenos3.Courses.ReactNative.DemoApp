@@ -9,15 +9,22 @@ const axiosWrapper = axios.create({
 
 axiosWrapper.interceptors.response.use(
   response => response,
-  error => {
+  async error => {
     if (error.response.status === 401) {
-      return authenticationApi.auth()
-        .then(res => {
-          if (res.status === 200) {
-            setToken(res.data.token);
-            return axios.request(error.config);
-          }
-        });
+      if (error.config._retry) {
+        return Promise.reject(error);
+      }
+
+      error.config._retry = true;
+
+      const authResult = await authenticationApi.auth()
+      if (authResult.status === 200) {
+        await setToken(authResult.data.token);
+        error.config.headers.Authorization = `Bearer ${authResult.data.token}`;
+
+        const requestResult = await axios.request(error.config);
+        return requestResult;
+      }
     }
 
     return Promise.reject(error);
@@ -25,11 +32,11 @@ axiosWrapper.interceptors.response.use(
 );
 
 axiosWrapper.interceptors.request.use(async config => {
-  if (config.url === '/auth') {
+  if (config.url === 'auth') {
     return config;
   }
 
-  var token = await getToken();
+  const token = await getToken();
   config.headers.Authorization = token ? `Bearer ${token}` : '';
 
   return config;

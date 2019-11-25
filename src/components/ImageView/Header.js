@@ -7,7 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-let width = Dimensions.get('window').width;
+const width = Dimensions.get('window').width;
 
 class Header extends Component {
   render() {

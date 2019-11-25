@@ -6,13 +6,13 @@ import {
   Dimensions,
 } from 'react-native';
 
-let width = Dimensions.get('window').width / 2;
+const width = Dimensions.get('window').width / 2;
 
 class ImageItem extends Component {
   render() {
     return (
       <TouchableOpacity style={styles.container} onPress={this.props.onPress}>
-        <Image style={styles.image} source={{uri: this.props.source}}/>
+        <Image style={styles.image} source={{uri: this.props.source}} />
       </TouchableOpacity>
     );
   }
