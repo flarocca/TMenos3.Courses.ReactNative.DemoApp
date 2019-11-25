@@ -16,3 +16,5 @@ This also contains some advanced topics such as Redux, Redux Thunk, Image Zoom, 
 1. git clone https://github.com/flarocca/TMenos3.Courses.ReactNative.DemoApp.git
 2. npm install
 3. npx react-native run-{android | ios}
+
+For a complete guide on how to set up the environment, please check [the oficial documentation](https://facebook.github.io/react-native/docs/getting-started).
