@@ -23,7 +23,7 @@ class Footer extends Component {
         <View style={styles.actionsContainer}>
           <TouchableOpacity
             style={styles.action}
-            onPress={this.props.onBlurPress}>
+            onPress={this.props.onShowEffectPress}>
             <Blur />
           </TouchableOpacity>
           <TouchableOpacity

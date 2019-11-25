@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Image} from 'react-native';
 import ImageZoom from 'react-native-image-pan-zoom';
 
 class ZoomableImage extends Component {
@@ -12,7 +11,7 @@ class ZoomableImage extends Component {
         imageHeight={this.props.height}
         minScale={1}
         maxScale={5}>
-        <Image style={this.props.imageStyle} source={{uri: this.props.uri}} />
+        {this.props.children}
       </ImageZoom>
     );
   }
